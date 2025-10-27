@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Acme_Circles_T-Shirt",
+    "title": "Acme Circles T-Shirt",
+    "price": "20.00",
+    "colors": [
+      {
+        "name": "black",
+        "pictures": ["/products/t-shirt-circles-black.png"]
+      },
+      {
+        "name": "white",
+        "pictures": ["/products/t-shirt-circles-white.png"]
+      },
+      {
+        "name": "blue",
+        "pictures": ["/products/t-shirt-circles-blue.png"]
+      }
+    ],
+    "sizes": ["XS", "S", "M", "L", "XL"]
+  },
+  {
+    "name": "Acme_Prism_T-Shirt",
+    "title": "Acme Prism T-Shirt",
+    "price": "25.00",
+    "sizes": ["XS", "S", "M", "L", "XL"],
+    "pictures": [
+        "/products/t-shirt-spiral-1.png",
+        "/products/t-shirt-spiral-2.png",
+        "/products/t-shirt-spiral-3.png",
+        "/products/t-shirt-spiral-4.png"
+    ]
+  }
+]

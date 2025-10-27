@@ -1,65 +1,61 @@
+import { Inter } from "next/font/google";
+import Header from "@/components/Header";
 import Image from "next/image";
+
+const inter = Inter({
+  subsets: ["latin"],
+});
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div
+      className={`w-screen h-fit min-h-screen flex flex-col items-center py-4 px-6 bg-[#fafafa] ${inter.className}`}
+    >
+      <Header />
+
+      <div className="grid grid-cols-3 grid-rows-2 max-h-[calc(100vh-200px)] h-full px-4 pb-4 gap-4 w-full max-w-screen-2xl">
+        <button className="cursor-pointer relative col-span-2 row-span-2 aspect-square border-[#ececec] hover:border-blue-400 border bg-white w-full h-full rounded-xl flex items-center justify-center overflow-hidden group">
+          <Image
+            height={720}
+            width={720}
+            alt="1"
+            src="/products/t-shirt-circles-black.png"
+            className="transition-transform duration-300 ease-in-out group-hover:scale-110"
+          />
+          <div className="rounded-full w-fit p-1 pl-2 text-xs border border-[#ececec] bg-white absolute bottom-5 left-5 font-semibold flex items-center justify-center">
+            <h3 className="mr-2">Acme Circles T-shirt</h3>
+            <div className="bg-blue-600 p-2 rounded-full text-white">$20.00 USD</div>
+          </div>
+        </button>
+
+        <div className="cursor-pointer relative col-start-3 row-start-1 aspect-square border-[#ececec] hover:border-blue-400 border bg-white w-full h-full rounded-xl flex items-center justify-center overflow-hidden group">
+          <Image
+            height={360}
+            width={360}
+            alt="1"
+            src="/products/bag-black.png"
+            className="transition-transform duration-300 ease-in-out group-hover:scale-110"
+          />
+          <button className="rounded-full w-fit p-1 pl-2 text-xs border border-[#ececec] bg-white absolute bottom-5 left-5 font-semibold flex items-center justify-center">
+            <h3 className="mr-2">Acme Drawstring Bag</h3>
+            <div className="bg-blue-600 p-2 rounded-full text-white">$12.00 USD</div>
+          </button>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="cursor-pointer relative col-start-3 row-start-2 aspect-square border-[#ececec] hover:border-blue-400 border bg-white w-full h-full rounded-xl flex items-center justify-center overflow-hidden group">
+          <Image
+            height={360}
+            width={360}
+            alt="1"
+            src="/products/cup-black.png"
+            className="transition-transform duration-300 ease-in-out group-hover:scale-110"
+          />
+          <button className="rounded-full w-fit p-1 pl-2 text-xs border border-[#ececec] bg-white absolute bottom-5 left-5 font-semibold flex items-center justify-center">
+            <h3 className="mr-2">Acme Cup</h3>
+            <div className="bg-blue-600 p-2 rounded-full text-white">$15.00 USD</div>
+          </button>
         </div>
-      </main>
+      </div>
     </div>
   );
 }
