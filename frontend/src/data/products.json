@@ -17,7 +17,8 @@
         "pictures": ["/products/t-shirt-circles-blue.png"]
       }
     ],
-    "sizes": ["XS", "S", "M", "L", "XL"]
+    "sizes": ["XS", "S", "M", "L", "XL"],
+    "category": "shirt"
   },
   {
     "name": "Acme_Prism_T-Shirt",
@@ -25,10 +26,138 @@
     "price": "25.00",
     "sizes": ["XS", "S", "M", "L", "XL"],
     "pictures": [
-        "/products/t-shirt-spiral-1.png",
-        "/products/t-shirt-spiral-2.png",
-        "/products/t-shirt-spiral-3.png",
-        "/products/t-shirt-spiral-4.png"
-    ]
+      "/products/t-shirt-spiral-1.png",
+      "/products/t-shirt-spiral-2.png",
+      "/products/t-shirt-spiral-3.png",
+      "/products/t-shirt-spiral-4.png"
+    ],
+    "category": "shirt"
+  },
+  {
+    "name": "Acme_Drawstring_Bag",
+    "title": "Acme Drawstring Bag",
+    "price": "12.00",
+    "colors": [
+      {
+        "name": "black",
+        "pictures": ["/products/bag-black.png"]
+      },
+      {
+        "name": "white",
+        "pictures": ["/products/bag-white.png"]
+      }
+    ],
+    "sizes": ["U"],
+    "category": "bag"
+  },
+  {
+    "name": "Acme_Cup",
+    "title": "Acme Cup",
+    "price": "15.00",
+    "colors": [
+      {
+        "name": "black",
+        "pictures": ["/products/cup-black.png"]
+      },
+      {
+        "name": "white",
+        "pictures": ["/products/cup-white.png"]
+      }
+    ],
+    "sizes": ["U"],
+    "category": "utility"
+  },
+  {
+    "name": "Acme_Baby_Cap",
+    "title": "Acme Baby Cap",
+    "price": "10.00",
+    "colors": [
+      {
+        "name": "black",
+        "pictures": ["/products/baby-cap-black.png"]
+      },
+      {
+        "name": "white",
+        "pictures": ["/products/baby-cap-white.png"]
+      }
+    ],
+    "sizes": ["U"],
+    "category": "hat"
+  },
+  {
+    "name": "Acme_Baby_Onesie",
+    "title": "Acme Baby Onesie",
+    "price": "10.00",
+    "colors": [
+      {
+        "name": "beige",
+        "pictures": [
+          "/products/baby-onesie-beige-1.png",
+          "/products/baby-onesie-beige-2.png"
+        ]
+      },
+      {
+        "name": "white",
+        "pictures": [
+          "/products/baby-onesie-white-1.png",
+          "/products/baby-onesie-white-2.png"
+        ]
+      },
+      {
+        "name": "black",
+        "pictures": [
+          "/products/baby-onesie-black-1.png",
+          "/products/baby-onesie-black-2.png"
+        ]
+      }
+    ],
+    "sizes": ["U"],
+    "category": "clothing"
+  },
+  {
+    "name": "Acme_Bomber_Jacket",
+    "title": "Acme Bomber Jacket",
+    "price": "20.00",
+    "colors": [
+      {
+        "name": "beige",
+        "pictures": ["/products/bomber-jacket-army.png"]
+      },
+      {
+        "name": "black",
+        "pictures": ["/products/bomber-jacket-black.png"]
+      }
+    ],
+    "category": "jacket"
+  },
+  {
+    "name": "Cowboy_Hat",
+    "title": "Cowboy Hat",
+    "price": "15.00",
+    "colors": [
+      {
+        "name": "black",
+        "pictures": [
+          "/products/cowboy-hat-black-1.png",
+          "/products/cowboy-hat-black-2.png",
+          "/products/cowboy-hat-black-3.png",
+          "/products/cowboy-hat-black-4.png",
+          "/products/cowboy-hat-black-5.png",
+          "/products/cowboy-hat-black-6.png"
+        ]
+      },
+      {
+        "name": "",
+        "pictures": [
+          "/products/cowboy-hat-tan-1.png",
+          "/products/cowboy-hat-tan-2.png",
+          "/products/cowboy-hat-tan-3.png",
+          "/products/cowboy-hat-tan-4.png",
+          "/products/cowboy-hat-tan-5.png",
+          "/products/cowboy-hat-tan-6.png"
+        ]
+      }
+    ],
+    "category": "hat"
   }
 ]

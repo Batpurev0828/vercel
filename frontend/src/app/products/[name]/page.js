@@ -1,15 +1,14 @@
 "use client";
 
-import * as React from "react";
+import React, { useState, useEffect, useMemo, use } from "react";
 import products from "@/data/products.json";
 import { Inter } from "next/font/google";
 import Header from "@/components/Header";
-import { useState, useEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Page({ params }) {
-  const productName = React.use(params)?.name ?? "";
+  const productName = use(params)?.name ?? "";
 
   const product = products.find((p) => p.name === productName);
 
@@ -18,54 +17,56 @@ export default function Page({ params }) {
 
   const [currCol, setCurrCol] = useState(initCol);
   const [currSize, setCurrSize] = useState(initSz);
-
   const [currImgIdx, setCurrImgIdx] = useState(0);
 
-  const images = React.useMemo(() => {
+  const images = useMemo(() => {
     if (!product) return [];
     if (product.colors?.length) {
-      const col = product.colors.find((c) => c.name === currCol) ?? product.colors[0];
-      return col?.pictures ?? [];
+      const col =
+        product.colors.find((c) => c.name === currCol) ?? product.colors[0];
+      return col.pictures ?? [];
     }
     return product.pictures ?? [];
   }, [product, currCol]);
 
   useEffect(() => {
     setCurrImgIdx(0);
-  }, [productName, currCol, product]);
+  }, [productName, product, currCol]);
 
   useEffect(() => {
     if (!product) return;
-    setCurrCol((prev) => prev ?? (product.colors?.[0]?.name ?? null));
-    setCurrSize((prev) => prev ?? (product.sizes?.[0] ?? null));
+    setCurrCol((prev) => prev ?? product.colors?.[0]?.name ?? null);
+    setCurrSize((prev) => prev ?? product.sizes?.[0] ?? null);
   }, [product]);
 
-  if (!product) return <h1>Could not find a product</h1>;
+  if (!product) {
+    return <h1>Could not find a product</h1>;
+  }
 
   const prevImage = () => {
     if (!images.length) return;
     setCurrImgIdx((i) => (i - 1 + images.length) % images.length);
   };
-
   const nextImage = () => {
     if (!images.length) return;
     setCurrImgIdx((i) => (i + 1) % images.length);
   };
 
   return (
-    <div className={`w-screen h-fit min-h-screen flex flex-col items-center py-4 px-6 bg-[#fafafa] ${inter.className}`}>
+    <div
+      className={`w-screen h-fit min-h-screen flex flex-col items-center py-4 px-6 bg-[#fafafa] ${inter.className}`}
+    >
       <Header />
-
-      <div className="flex bg-white w-full max-w-screen-2xl rounded-xl border border-[#ececec] max-h-[calc(100vh-200px)] h-full p-8 gap-8">
-        {/* IMAGE / CAROUSEL AREA */}
+      <div className="flex bg-white w-full max-w-screen-2xl rounded-xl border border-[#ececec] max-h-[calc(100vh-200px)] h-[960px] p-8 gap-8">
         <div className="flex basis-4/6 h-full items-center justify-center flex-col relative">
           <div className="w-full h-full max-h-[70vh] flex items-center justify-center relative">
-            
             {images.length ? (
               <div className="w-full h-full flex items-center justify-center">
                 <img
                   src={images[currImgIdx]}
-                  alt={`${product.title} - ${currCol ?? "default"} - ${currImgIdx + 1}`}
+                  alt={`${product.title} - ${currCol ?? "default"} - ${
+                    currImgIdx + 1
+                  }`}
                   className="max-h-[70vh] max-w-full object-contain rounded-md"
                 />
               </div>
@@ -102,9 +103,15 @@ export default function Page({ params }) {
                 <button
                   key={src + i}
                   onClick={() => setCurrImgIdx(i)}
-                  className={`flex-none w-20 h-20 rounded-md overflow-hidden border ${i === currImgIdx ? "border-blue-600" : "border-gray-200"} shrink-0`}
+                  className={`flex-none w-20 h-20 rounded-md overflow-hidden border ${
+                    i === currImgIdx ? "border-blue-600" : "border-gray-200"
+                  } shrink-0`}
                 >
-                  <img src={src} alt={`thumb-${i}`} className="w-full h-full object-cover" />
+                  <img
+                    src={src}
+                    alt={`thumb-${i}`}
+                    className="w-full h-full object-cover"
+                  />
                 </button>
               ))}
             </div>
@@ -120,9 +127,18 @@ export default function Page({ params }) {
           </div>
 
           {product.colors?.length ? (
-            <form className="w-full flex flex-col tracking-wide mb-6" aria-labelledby="color-heading">
-              <h2 id="color-heading" className="text-sm mb-4">COLOR</h2>
-              <fieldset className="flex space-x-2" role="radiogroup" aria-label="Color options">
+            <form
+              className="w-full flex flex-col tracking-wide mb-6"
+              aria-labelledby="color-heading"
+            >
+              <h2 id="color-heading" className="text-sm mb-4">
+                COLOR
+              </h2>
+              <fieldset
+                className="flex space-x-2"
+                role="radiogroup"
+                aria-label="Color options"
+              >
                 {product.colors.map((color, i) => {
                   const id = `color-${product.name}-${i}`;
                   return (
@@ -139,9 +155,12 @@ export default function Page({ params }) {
                       />
                       <label
                         htmlFor={id}
-                        className="px-4 py-2 rounded-full border border-gray-300 text-sm capitalize
-                                   peer-checked:bg-blue-600 peer-checked:text-white peer-checked:border-blue-600
-                                   hover:bg-gray-100 transition-colors inline-block cursor-pointer"
+                        className={`px-4 py-2 rounded-full border border-gray-300 text-sm capitalize
+                          ${
+                            currCol === color.name
+                              ? "bg-blue-600 text-white border-blue-600"
+                              : "hover:bg-gray-100"
+                          } transition-colors inline-block cursor-pointer`}
                       >
                         {color.name}
                       </label>
@@ -153,9 +172,18 @@ export default function Page({ params }) {
           ) : null}
 
           {product.sizes?.length ? (
-            <form className="w-full flex flex-col tracking-wide mb-6" aria-labelledby="size-heading">
-              <h2 id="size-heading" className="text-sm mb-4">SIZE</h2>
-              <fieldset className="flex space-x-2" role="radiogroup" aria-label="Size options">
+            <form
+              className="w-full flex flex-col tracking-wide mb-6"
+              aria-labelledby="size-heading"
+            >
+              <h2 id="size-heading" className="text-sm mb-4">
+                SIZE
+              </h2>
+              <fieldset
+                className="flex space-x-2"
+                role="radiogroup"
+                aria-label="Size options"
+              >
                 {product.sizes.map((size, i) => {
                   const id = `size-${product.name}-${i}`;
                   return (
@@ -172,8 +200,12 @@ export default function Page({ params }) {
                       />
                       <label
                         htmlFor={id}
-                        className="px-4 py-2 rounded-full border border-gray-300 text-sm capitalize peer-checked:border-blue-600
-                                   hover:bg-gray-100 transition-colors inline-block cursor-pointer"
+                        className={`px-4 py-2 rounded-full border border-gray-300 text-sm capitalize
+                          ${
+                            currSize === size
+                              ? "bg-blue-600 text-white border-blue-600"
+                              : "hover:bg-gray-100"
+                          } transition-colors inline-block cursor-pointer`}
                       >
                         {size}
                       </label>
