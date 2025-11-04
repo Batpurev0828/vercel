@@ -1,5 +1,6 @@
 "use client";
 
+import { Plus } from "lucide-react";
 import React, { useState, useEffect, useMemo, use } from "react";
 import products from "@/data/products.json";
 import { Inter } from "next/font/google";
@@ -215,6 +216,10 @@ export default function Page({ params }) {
               </fieldset>
             </form>
           ) : null}
+          <button className="w-full h-15 bg-blue-600 mt-4 hover:bg-blue-700 text-white rounded-full flex items-center justify-center relative">
+            <Plus className="absolute left-5" />
+            Add to cart
+          </button>
         </div>
       </div>
     </div>
