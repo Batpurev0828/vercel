@@ -54,7 +54,7 @@ export default function Page({ params }) {
 
   return (
     <div
-      className={`w-screen h-fit min-h-screen flex flex-col items-center py-4 px-6 bg-[#fafafa] ${inter.className}`}
+      className={`w-screen h-fit min-h-screen flex flex-col items-center py-4 px-6 text-black bg-[#fafafa] ${inter.className}`}
     >
       <Header />
       <div className="flex bg-white w-full max-w-screen-2xl rounded-xl border border-[#ececec] max-h-[calc(100vh-200px)] h-[960px] p-8 gap-8">

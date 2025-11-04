@@ -14,7 +14,7 @@ const inter = Inter({
 export default function Home() {
   return (
     <div
-      className={`w-screen h-fit min-h-screen flex flex-col items-center py-4 px-6 bg-[#fafafa] ${inter.className}`}
+      className={`w-screen h-fit min-h-screen flex flex-col items-center py-4 px-6 text-black bg-[#fafafa] ${inter.className}`}
     >
       <Header />
 
